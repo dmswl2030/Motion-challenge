@@ -9,14 +9,7 @@ const Wrapper = styled.div`
   justify-content: space-around;
   align-items: center;
 `;
-const WrapperNew = styled.div`
-  width: 800px;
-  height: 500px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #5697ff;
-`;
+
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -96,8 +89,8 @@ function App() {
             key={id}
             layoutId={id}
           >
-            {id === "2" && <Circle layoutId="moveCircle" />}
-            {id === "3" && <Circle layoutId="moveCircle" />}
+            {id === "2" && !clicked && <Circle layoutId="moveCircle" />}
+            {id === "3" && clicked && <Circle layoutId="moveCircle" />}
           </Box>
         ))}
       </Grid>
@@ -121,11 +114,7 @@ function App() {
           </Overlay>
         ) : null}
       </AnimatePresence>
-      <CircleSwitch onClick={toggleClicked}>
-        Switch
-        {id === "2" && !clicked && <Circle layoutId="moveCircle" />}
-        {id === "3" && clicked && <Circle layoutId="moveCircle" />}
-      </CircleSwitch>
+      <CircleSwitch onClick={toggleClicked}>Switch</CircleSwitch>
     </Wrapper>
   );
 }
